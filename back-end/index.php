@@ -58,7 +58,7 @@ curl_close($ch);
 
 $query = "INSERT INTO 
           imdb_movies(
-            internal_id, rank, title, year, img, crew, rating, rating_count
+            internal_id, rank, title, year, img, crew, rating, rating_count, date
           ) VALUES ";
 for($i=0; $i<count($output); $i++)
 {
@@ -69,7 +69,8 @@ for($i=0; $i<count($output); $i++)
     $query .= "'".str_replace("'", "''", $output[$i]["image"])."', ";
     $query .= "'".str_replace("'", "''", $output[$i]["crew"])."', ";
     $query .= $output[$i]["imDbRating"].", ";
-    $query .= $output[$i]["imDbRatingCount"]."), ";
+    $query .= $output[$i]["imDbRatingCount"].", ";
+    $query .= date('Y:m:d')."), ";
 }
 
 $query = substr($query, 0, strlen($query)-2);
