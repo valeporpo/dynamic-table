@@ -1,15 +1,27 @@
 <?php
 include_once 'config/config.php';
-$curlSES = curl_init(); 
 
-curl_setopt($curlSES,CURLOPT_URL,"https://imdb-api.com/en/API/Top250Movies/k_n0syenze");
-curl_setopt($curlSES,CURLOPT_RETURNTRANSFER,true);
-curl_setopt($curlSES,CURLOPT_HEADER, false); 
+$connInfo = [
+    "host" => DB_HOST,
+    "dbname" => DB_NAME,
+    "user" => DB_USER,
+    "password" => DB_PASSWORD
+];
+$connString = assembleInfo($connInfo);
+$conn = pg_connect($connString)
+          or die('Could not connect: ' . print_r(error_get_last()));
+$query = "CREATE TABLE [IF NOT EXISTS] table_name (
+    id SERIAL PRIMARY_KEY
+    internal_id CHAR(9),
+    rank INT,
+    title VARCHAR(200),
+    year INT,
+    img VARCHAR(1500),
+    crew VARCHAR(500),
+    rating FLOAT,
+    rating_count INT
+ );";
 
-$result = curl_exec($curlSES);
-
-curl_close($curlSES);
-
-echo $result;
+ pg_query($conn, $query);
 
 ?>
