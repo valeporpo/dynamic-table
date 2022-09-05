@@ -42,7 +42,7 @@ $ch = curl_init();
 // set URL and other appropriate options
 curl_setopt($ch, CURLOPT_URL, "https://imdb-api.com/en/API/Top250Movies/k_n0syenze");
 curl_setopt($ch, CURLOPT_HEADER, 0);
-
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 // grab URL and pass it to the browser
 $output=curl_exec($ch);
 $output=json_decode($output, 1);
