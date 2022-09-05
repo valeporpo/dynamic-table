@@ -74,7 +74,7 @@ for($i=0; $i<count($output); $i++)
     $query .= "'".str_replace("'", "''", $output[$i]["crew"])."', ";
     $query .= $output[$i]["imDbRating"].", ";
     $query .= $output[$i]["imDbRatingCount"].", ";
-    $query .= date('Y-m-d')."), ";
+    $query .= "'".date('Y-m-d')."'), ";
 }
 
 $query = substr($query, 0, strlen($query)-2);
