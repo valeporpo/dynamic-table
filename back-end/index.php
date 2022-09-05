@@ -46,10 +46,30 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 // grab URL and pass it to the browser
 $output=curl_exec($ch);
 $output=json_decode($output, 1);
-echo '<pre>';
+$output=$output['items'];
+/*echo '<pre>';
 var_dump($output);
-echo '</pre>';
+echo '</pre>';*/
 // close cURL resource, and free up system resources
-curl_close($ch); 
+curl_close($ch);
+
+$query = "INSERT INTO 
+          imdb_table(
+            internal_id, rank, title, year, img, crew, rating, rating_count
+          ) VALUES ";
+for($i=0; $i<count($output); $i++)
+{
+    $query .= "(".$output["id"].", ";
+    $query .= $output["rank"].", ";
+    $query .= $output["title"].", ";
+    $query .= $output["year"].", ";
+    $query .= $output["image"].", ";
+    $query .= $output["crew"].", ";
+    $query .= $output["imDbRating"].", ";
+    $query .= $output["imDbRatingCount"].") ";
+}
+
+echo $query;
+
 die('here');
 ?>
