@@ -22,6 +22,8 @@ $conn = pg_connect($string)
 
 $query = "DROP TABLE imdb_movies";
 pg_query($conn, $query);
+if(pg_last_error($conn))
+die(pg_last_error($conn)) ;
 
 $query = "CREATE TABLE imdb_movies (
     id SERIAL,
@@ -36,7 +38,8 @@ $query = "CREATE TABLE imdb_movies (
     date DATE
  );";
  pg_query($conn, $query);
-
+ if(pg_last_error($conn))
+ die(pg_last_error($conn)) ;
  //$query = "DROP TABLE imdb_movies";
  //pg_query($conn, $query);
  //echo pg_last_error($conn);
@@ -73,5 +76,6 @@ for($i=0; $i<count($output); $i++)
 $query = substr($query, 0, strlen($query)-2);
 echo $query; 
 pg_query($conn, $query);
-echo pg_last_error($conn);
+if(pg_last_error($conn))
+die(pg_last_error($conn)) ;
 ?>
