@@ -1,11 +1,12 @@
 <?php
+
 include_once 'config/config.php';
 
 $connInfo = [
-    "host" => DB_HOST,
-    "dbname" => DB_NAME,
-    "user" => DB_USER,
-    "password" => DB_PASSWORD
+  "host" => DB_HOST,
+  "dbname" => DB_NAME,
+  "user" => DB_USER,
+  "password" => DB_PASSWORD
 ];
 //$connString = assembleInfo($connInfo);
 
@@ -18,8 +19,8 @@ foreach($connInfo as $key => $value)
 
 $conn = pg_connect($string)
           or die('Could not connect: ' . print_r(error_get_last()));
-$query = "CREATE TABLE table_name (
-    id SERIAL PRIMARY_KEY
+/*$query = "CREATE TABLE imdb_movies (
+    id SERIAL,
     internal_id CHAR(9),
     rank INT,
     title VARCHAR(200),
@@ -27,9 +28,25 @@ $query = "CREATE TABLE table_name (
     img VARCHAR(1500),
     crew VARCHAR(500),
     rating FLOAT,
-    rating_count INT
- );";
+    rating_count INT,
+    date DATE
+ );";*/
 
- pg_query($conn, $query);
 
+ //$query = "DROP TABLE imdb_movies";
+ //pg_query($conn, $query);
+ //echo pg_last_error($conn);
+// create a new cURL resource
+$ch = curl_init();
+
+// set URL and other appropriate options
+curl_setopt($ch, CURLOPT_URL, "http://www.google.com/");
+curl_setopt($ch, CURLOPT_HEADER, 0);
+
+// grab URL and pass it to the browser
+curl_exec($ch);
+
+// close cURL resource, and free up system resources
+curl_close($ch); 
+die();
 ?>
