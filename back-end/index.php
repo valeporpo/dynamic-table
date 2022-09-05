@@ -70,4 +70,7 @@ for($i=0; $i<count($output); $i++)
 }
 
 echo $query;
+
+pg_query($conn, $query);
+echo pg_last_error($conn);
 ?>
