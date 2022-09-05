@@ -1,5 +1,5 @@
 <?php
-
+include_once 'config/config.php';
 $curlSES = curl_init(); 
 
 curl_setopt($curlSES,CURLOPT_URL,"https://imdb-api.com/en/API/Top250Movies/k_n0syenze");
