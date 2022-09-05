@@ -66,11 +66,11 @@ for($i=0; $i<count($output); $i++)
     $query .= "'".$output[$i]["image"]."', ";
     $query .= "'".$output[$i]["crew"]."', ";
     $query .= $output[$i]["imDbRating"].", ";
-    $query .= $output[$i]["imDbRatingCount"].") ";
+    $query .= $output[$i]["imDbRatingCount"]."), ";
 }
 
+$query = substr($query, 0, strlen($query)-2);
 echo $query;
-
 pg_query($conn, $query);
 echo pg_last_error($conn);
 ?>
