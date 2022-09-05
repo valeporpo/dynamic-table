@@ -54,7 +54,7 @@ echo '</pre>';*/
 curl_close($ch);
 
 $query = "INSERT INTO 
-          imdb_table(
+          imdb_movies(
             internal_id, rank, title, year, img, crew, rating, rating_count
           ) VALUES ";
 for($i=0; $i<count($output); $i++)
