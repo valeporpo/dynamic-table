@@ -59,17 +59,15 @@ $query = "INSERT INTO
           ) VALUES ";
 for($i=0; $i<count($output); $i++)
 {
-    $query .= "(".$output["id"].", ";
-    $query .= $output["rank"].", ";
-    $query .= $output["title"].", ";
-    $query .= $output["year"].", ";
-    $query .= $output["image"].", ";
-    $query .= $output["crew"].", ";
-    $query .= $output["imDbRating"].", ";
-    $query .= $output["imDbRatingCount"].") ";
+    $query .= "(".$output[$i]["id"].", ";
+    $query .= $output[$i]["rank"].", ";
+    $query .= $output[$i]["title"].", ";
+    $query .= $output[$i]["year"].", ";
+    $query .= $output[$i]["image"].", ";
+    $query .= $output[$i]["crew"].", ";
+    $query .= $output[$i]["imDbRating"].", ";
+    $query .= $output[$i]["imDbRatingCount"].") ";
 }
 
 echo $query;
-
-die('here');
 ?>
