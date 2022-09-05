@@ -18,7 +18,7 @@ foreach($connInfo as $key => $value)
 
 $conn = pg_connect($string)
           or die('Could not connect: ' . print_r(error_get_last()));
-$query = "CREATE TABLE [IF NOT EXISTS] table_name (
+$query = "CREATE TABLE table_name (
     id SERIAL PRIMARY_KEY
     internal_id CHAR(9),
     rank INT,
