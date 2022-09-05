@@ -19,7 +19,7 @@ foreach($connInfo as $key => $value)
 
 $conn = pg_connect($string)
           or die('Could not connect: ' . print_r(error_get_last()));
-
+die('here');
 $query = "DROP TABLE imdb_movies";
 pg_query($conn, $query);
 if(pg_last_error($conn))
