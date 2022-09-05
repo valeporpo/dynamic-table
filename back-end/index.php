@@ -7,8 +7,16 @@ $connInfo = [
     "user" => DB_USER,
     "password" => DB_PASSWORD
 ];
-$connString = assembleInfo($connInfo);
-$conn = pg_connect($connString)
+//$connString = assembleInfo($connInfo);
+
+$string = "";
+
+foreach($connInfo as $key => $value)
+{
+      $string .= $key . "=" . $value . " ";
+    }
+
+$conn = pg_connect($string)
           or die('Could not connect: ' . print_r(error_get_last()));
 $query = "CREATE TABLE [IF NOT EXISTS] table_name (
     id SERIAL PRIMARY_KEY
