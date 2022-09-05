@@ -59,7 +59,7 @@ $query = "INSERT INTO
           ) VALUES ";
 for($i=0; $i<count($output); $i++)
 {
-    $query .= "(".$output[$i]["id"].", ";
+    $query .= "('".$output[$i]["id"]."', ";
     $query .= $output[$i]["rank"].", ";
     $query .= "'".$output[$i]["title"]."', ";
     $query .= $output[$i]["year"].", ";
