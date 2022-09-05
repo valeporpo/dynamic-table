@@ -43,7 +43,7 @@ die(pg_last_error($conn)) ;*/
  //pg_query($conn, $query);
  //echo pg_last_error($conn);
 // create a new cURL resource
-pg_query($conn, "TRUNCATE imdb_movies");
+/*pg_query($conn, "TRUNCATE imdb_movies");
 if(pg_last_error($conn))
 die(pg_last_error($conn));
 
@@ -82,5 +82,11 @@ echo $query;
 pg_query($conn, $query);
 if(pg_last_error($conn))
 die(pg_last_error($conn)) ;
-die('here');
+die('here');*/
+
+$select = pg_query($conn, "SELECT * FROM imdb_movies");
+while($row=pg_fetch_assoc($select))
+{
+    print_r($row);
+}
 ?>
