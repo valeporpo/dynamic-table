@@ -37,8 +37,8 @@ $query = "CREATE TABLE imdb_movies (
  );";
  pg_query($conn, $query);
 
- $query = "DROP TABLE imdb_movies";
- pg_query($conn, $query);
+ //$query = "DROP TABLE imdb_movies";
+ //pg_query($conn, $query);
  //echo pg_last_error($conn);
 // create a new cURL resource
 /*$ch = curl_init();
