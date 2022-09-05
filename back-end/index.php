@@ -45,7 +45,7 @@ curl_setopt($ch, CURLOPT_HEADER, 0);
 
 // grab URL and pass it to the browser
 $output=curl_exec($ch);
-$output=json_decode($output);
+//$output=json_decode($output);
 echo '<pre>';
 var_dump($output);
 echo '</pre>';
