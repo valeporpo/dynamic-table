@@ -40,12 +40,12 @@ $conn = pg_connect($string)
 $ch = curl_init();
 
 // set URL and other appropriate options
-curl_setopt($ch, CURLOPT_URL, "http://www.google.com/");
+curl_setopt($ch, CURLOPT_URL, "https://imdb-api.com/en/API/Top250Movies/k_n0syenze");
 curl_setopt($ch, CURLOPT_HEADER, 0);
 
 // grab URL and pass it to the browser
-curl_exec($ch);
-
+$output=curl_exec($ch);
+echo $output;
 // close cURL resource, and free up system resources
 curl_close($ch); 
 die('here');
