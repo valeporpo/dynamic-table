@@ -61,10 +61,10 @@ for($i=0; $i<count($output); $i++)
 {
     $query .= "(".$output[$i]["id"].", ";
     $query .= $output[$i]["rank"].", ";
-    $query .= $output[$i]["title"].", ";
+    $query .= "'".$output[$i]["title"]."', ";
     $query .= $output[$i]["year"].", ";
-    $query .= $output[$i]["image"].", ";
-    $query .= $output[$i]["crew"].", ";
+    $query .= "'".$output[$i]["image"]."', ";
+    $query .= "'".$output[$i]["crew"]."', ";
     $query .= $output[$i]["imDbRating"].", ";
     $query .= $output[$i]["imDbRatingCount"].") ";
 }
