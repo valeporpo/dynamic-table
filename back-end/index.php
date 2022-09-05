@@ -43,7 +43,7 @@ die(pg_last_error($conn)) ;*/
  //pg_query($conn, $query);
  //echo pg_last_error($conn);
 // create a new cURL resource
-/*$ch = curl_init();
+$ch = curl_init();
 
 
 curl_setopt($ch, CURLOPT_URL, "https://imdb-api.com/en/API/Top250Movies/k_n0syenze");
@@ -54,7 +54,7 @@ $output=curl_exec($ch);
 $output=json_decode($output, 1);
 $output=$output['items'];
 
-curl_close($ch);*/
+curl_close($ch);
 
 $query = "INSERT INTO 
           imdb_movies(
