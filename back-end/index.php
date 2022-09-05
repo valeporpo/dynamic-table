@@ -19,9 +19,13 @@ foreach($connInfo as $key => $value)
 
 $conn = pg_connect($string)
           or die('Could not connect: ' . print_r(error_get_last()));
-/*$query = "CREATE TABLE imdb_movies (
+
+$query = "DROP TABLE imdb_movies";
+pg_query($conn, $query);
+
+$query = "CREATE TABLE imdb_movies (
     id SERIAL,
-    internal_id CHAR(9),
+    internal_id VARCHAR(10),
     rank INT,
     title VARCHAR(200),
     year INT,
@@ -30,28 +34,25 @@ $conn = pg_connect($string)
     rating FLOAT,
     rating_count INT,
     date DATE
- );";*/
+ );";
+ pg_query($conn, $query);
 
-
- //$query = "DROP TABLE imdb_movies";
- //pg_query($conn, $query);
+ $query = "DROP TABLE imdb_movies";
+ pg_query($conn, $query);
  //echo pg_last_error($conn);
 // create a new cURL resource
-$ch = curl_init();
+/*$ch = curl_init();
 
-// set URL and other appropriate options
+
 curl_setopt($ch, CURLOPT_URL, "https://imdb-api.com/en/API/Top250Movies/k_n0syenze");
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// grab URL and pass it to the browser
+
 $output=curl_exec($ch);
 $output=json_decode($output, 1);
 $output=$output['items'];
-/*echo '<pre>';
-var_dump($output);
-echo '</pre>';*/
-// close cURL resource, and free up system resources
-curl_close($ch);
+
+curl_close($ch);*/
 
 $query = "INSERT INTO 
           imdb_movies(
