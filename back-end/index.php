@@ -21,7 +21,7 @@ $conn = pg_connect($string)
           or die('Could not connect: ' . print_r(error_get_last()));
 /*
 $query = "DROP TABLE imdb_movies";
-pg_query($conn, $query);*/
+pg_query($conn, $query);
 
 $query = "CREATE TABLE imdb_movies (
     id SERIAL,
@@ -37,8 +37,8 @@ $query = "CREATE TABLE imdb_movies (
  );";
  pg_query($conn, $query);
 if(pg_last_error($conn))
-die(pg_last_error($conn)) ;
-die('here');
+die(pg_last_error($conn)) ;*/
+
  //$query = "DROP TABLE imdb_movies";
  //pg_query($conn, $query);
  //echo pg_last_error($conn);
@@ -77,4 +77,5 @@ echo $query;
 pg_query($conn, $query);
 if(pg_last_error($conn))
 die(pg_last_error($conn)) ;
+die('here');
 ?>
