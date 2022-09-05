@@ -43,6 +43,10 @@ die(pg_last_error($conn)) ;*/
  //pg_query($conn, $query);
  //echo pg_last_error($conn);
 // create a new cURL resource
+pg_query($conn, "TRUNCATE imdb_movies");
+if(pg_last_error($conn))
+die(pg_last_error($conn));
+
 $ch = curl_init();
 
 
