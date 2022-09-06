@@ -11,6 +11,18 @@ body > div#root > div.movie-table > div.movie-row {
   height: 90px;
 }
 
+body > div#root > div.movie-table > div.movie-row.movie-row-header
+/* La righe di intestazione */{
+  background-color:dimgray;
+  color: white;
+}
+
+body > div#root > div.movie-table > div.movie-row.movie-row-header
+> div.filter /* Le celle di intestazione */{
+  cursor: pointer;
+}
+
+
 /* Le celle della riga */
 body > div#root > div.movie-table > div.movie-row
 > div {
