@@ -1,5 +1,7 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 include_once 'config/config.php';
 
 $connInfo = [
@@ -85,8 +87,30 @@ die(pg_last_error($conn)) ;
 die('here');*/
 
 $select = pg_query($conn, "SELECT * FROM imdb_movies");
-while($row=pg_fetch_assoc($select))
+$response = [];
+if($select)
 {
-    print_r($row);
+    $response["status"] = "success";
+    $response["data"] = [];
+} else
+{
+    $response["status"] = "something went wrong";
+    echo json_encode($response);
+    exit;
 }
+while($row = pg_fetch_assoc($select))
+{
+    $response["data"][] = [
+        "imdb_ref_id" => $row["internal_id"],
+        "title" => $row["title"],
+        "year" => $row["year"],
+        "crew" => $row["crew"],
+        "rank" => $row["rank"],
+        "rating" => $row["rating"],
+        "rating_count" => $row["rating_count"],
+        "image" => $row["img"]
+    ];
+}
+echo json_encode($response, JSON_UNESCAPED_SLASHES);
+exit;
 ?>
