@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Table from './components/Table'
 
-function App() {
+export default function App() {
+
+  const [data, setData] = React.useState({
+    loaded : false,
+    data : null,
+    error: false
+  })
+
+  React.useEffect(
+      () => {
+         fetch("http://localhost:3000/back-end/index.php")
+           .then(data => data.json())
+           .then((res) => {
+              if(res.status === "success" && res.data) {
+                setData(
+                  { ...data,
+                    loaded : true,
+                    data : res.data }
+                )
+              } else {
+                  setData(
+                    { ...data,
+                      error : true }
+                  )
+              }
+         })
+      }, []
+  )
+
+  if(data.error) { return('Some error occurred'); }
+  if(!data.loaded) { return('Wait for a soon response'); }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Table movies={data.data}
+      />
   );
 }
-
-export default App;

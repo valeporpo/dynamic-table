@@ -1,13 +1,62 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* La tabella */
+body > div#root > div.movie-table {
+  margin-right: 5%;
+  margin-left: 5%;
+  border: 1px solid black;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* La riga */
+body > div#root > div.movie-table > div.movie-row {
+  display: flex;
+  height: 90px;
+}
+
+/* Le celle della riga */
+body > div#root > div.movie-table > div.movie-row
+> div {
+  display: inherit;
+  align-items: center;
+}
+
+body > div#root > div.movie-table > div.movie-row
+> div.movie-row-image /* La cella dell'immagine */{
+  width: 10%;
+  text-align: center;
+}
+
+body > div#root > div.movie-table > div.movie-row
+> div.movie-row-image > a > div /* Il link attorno all'immagine */{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body > div#root > div.movie-table > div.movie-row
+> div.movie-row-image > a > div > img /* L'immagine */{
+  position: relative;
+  width: 70%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+body > div#root > div.movie-table > div.movie-row
+> div.movie-row-title /* Il titolo */{
+  width: 52%;
+  line-height: normal;
+}
+
+body > div#root > div.movie-table > div.movie-row
+> div.movie-row-year /* L'anno */{
+  width: 7%;
+}
+
+body > div#root > div.movie-table > div.movie-row
+> div.movie-row-rating /* La valutazione media */{
+  width: 8%;
+}
+
+body > div#root > div.movie-table > div.movie-row
+> div.movie-row-more-infos /* La valutazione media */{
+  width: 22%;
 }
