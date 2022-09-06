@@ -103,11 +103,11 @@ while($row = pg_fetch_assoc($select))
     $response["data"][] = [
         "imdb_ref_id" => $row["internal_id"],
         "title" => $row["title"],
-        "year" => $row["year"],
+        "year" => intval($row["year"]),
         "crew" => $row["crew"],
-        "rank" => $row["rank"],
-        "rating" => $row["rating"],
-        "rating_count" => $row["rating_count"],
+        "rank" => intval($row["rank"]),
+        "rating" => floatval($row["rating"]),
+        "rating_count" => intval($row["rating_count"]),
         "image" => $row["img"]
     ];
 }
