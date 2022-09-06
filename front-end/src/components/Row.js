@@ -19,7 +19,8 @@ export default function Row(props) {
             {props.movie.year}
         </div>
         <div className="movie-row-rating">
-            {props.movie.rating + ' ('+ props.movie.rank +'°)'}
+            <span>{props.movie.rating}</span>
+            <span>({props.movie.rank}°)</span>
         </div>
         <div className="movie-row-more-infos">
             More info
